@@ -26,32 +26,40 @@ var adventDay12 = function (obj) {
     getVals = function (o) {
       var ret = [], keys = getKeys(o);
       if (keys) {
-        for (i in keys) {
-          ret.push(o[i]);
+        for (var i = 0; i < keys.length; i++) {
+          ret.push(o[keys[i]]);
         }
+        return ret;
       } else if (!keys) {
         return false;
       }
     },
     getNums = function (s) {
       if (isNaN(Number(s))) {
-        ret +=0
+        count +=0;
       } else if (!isNaN(Number(s))) {
-        ret += Number(s)
+        count += Number(s);
+        console.log(s);
+        console.log('count is now '+count+'');
       }
     },
     check = function (o) {
       var keys = getKeys(o);
         if (keys) { 
-            if (isNaN(Number(keys[0]))) {
+            if (!Array.isArray(o)) {
               var vals = getVals(o);
-              
+              console.log('object');
+              console.log(o)
+              console.log(vals);
               if (vals.every(e => e != 'red')) {
                 vals.map(check);
-              } else {delete o;}
+              } else {count+=0;return;}
 
-            } else if (!isNaN(Number(keys[0]))) {
+            } else if (Array.isArray(o)) {
               var vals = getVals(o);
+                console.log('array');
+                console.log(o)
+                console.log(vals);
                 vals.map(check);      
               }   
         } else if (!keys) {
@@ -59,4 +67,5 @@ var adventDay12 = function (obj) {
         }
       }
     check(obj);  
+    return count;
 }
