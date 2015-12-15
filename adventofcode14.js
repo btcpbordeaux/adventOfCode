@@ -14,3 +14,4 @@ var advent14 = (v, vt, r, total) => {
 var rets = [];
 for (i in t) {rets.push(advent14(t[i][0],t[i][1],t[i][2],2503))}
 console.log(Math.max(...rets))
+
