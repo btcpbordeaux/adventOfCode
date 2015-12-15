@@ -3,7 +3,7 @@
 //part one 
 var arr = []; 
 var t = document.querySelector('pre').textContent.replace(/[^0-9-]/g,',').split(',');
-for (var i=0; i < t.length;i++) {
+for (var i=0; i < t.length; i++) {
   if (t[i] != "") {arr.push(t[i])} 
   else {continue;}
 };
@@ -53,7 +53,7 @@ var adventDay12 = function (obj) {
               console.log(vals);
               if (vals.every(e => e != 'red')) {
                 vals.map(check);
-              } else {count+=0;return;}
+              } else {count+=0;}
 
             } else if (Array.isArray(o)) {
               var vals = getVals(o);
