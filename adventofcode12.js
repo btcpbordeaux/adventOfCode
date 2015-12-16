@@ -26,8 +26,8 @@ var adventDay12 = function (obj) {
     getVals = function (o) {
       var ret = [], keys = getKeys(o);
       if (keys) {
-        for (var i = 0; i < keys.length; i++) {
-          ret.push(o[keys[i]]);
+        for (i in o) {
+          ret.push(o[i]);
         }
         return ret;
       } else if (!keys) {
@@ -69,3 +69,4 @@ var adventDay12 = function (obj) {
     check(obj);  
     return count;
 }
+console.log(adventDay12(t))
