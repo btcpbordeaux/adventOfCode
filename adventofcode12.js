@@ -51,7 +51,7 @@ var adventDay12 = function (obj) {
               console.log('object');
               console.log(o)
               console.log(vals);
-              if (vals.every(e => e != 'red')) {
+              if (vals.every(e => e !== 'red')) {
                 vals.map(check);
               } else {count+=0;}
 
@@ -70,3 +70,39 @@ var adventDay12 = function (obj) {
     return count;
 }
 console.log(adventDay12(t))
+
+//part two
+//second solution
+var t = eval(document.querySelector('pre').textContent);
+
+var adventDay12 = function (obj) {
+  var count = 0,
+    getVals = function (o) {
+      var ret = [];
+        for (i in o) {
+          ret.push(o[i]);
+        }
+        return ret; 
+    }; 
+     
+      if (obj instanceof Array) {
+        var vals = getVals(obj);
+          for (i in vals) {
+              count += adventDay12(vals[i]);
+          };      
+
+      } else if (obj instanceof Object) {
+          var vals = getVals(obj);
+            if(vals.every(e => e !== 'red')) {
+              for (i in vals) {  
+                count += search(vals[i]);
+              }
+            } else {count = 0;}
+      } else {
+        count += ~~obj;
+      }
+  
+    return count;
+}
+console.log(adventDay12(t)) 
+
